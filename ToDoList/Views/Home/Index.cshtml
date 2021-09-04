@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ToDoList.Models.MyToDoList>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<meta charset="utf-8" />
+<a href="Home/Create">Добавить пользователя</a>
+
+    <table >
+
+        <tr><td>Номер задачи</td><td>Время записи</td><td>Задача</td><td>Приоритет выполнения</td><td>Выполнения</td></tr>
+
+        @foreach (var item in Model)
+        {
+            <tr><td>@item.Id</td><td>@item.DateTime</td><td>@item.Tasc</td><td>@item.importance</td><td>@item.CompletedNoCompleted</td></tr>
+
+
+
+
+        }
+    </table>
+

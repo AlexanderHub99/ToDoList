@@ -1,0 +1,57 @@
+﻿@using ToDoList.Models
+@model MyToDoList
+
+
+@using (Html.BeginForm())
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <meta charset="utf-8" />
+    <form class="form">
+        <h2> Добовление задачи</h2>
+        <div class="form__input">
+            @Html.LabelFor(MyToDoList => MyToDoList.DateTime)
+            @Html.EditorFor(MyToDoList => MyToDoList.DateTime)
+        </div>
+        <div class="form__input">
+            @Html.LabelFor(MyToDoList => MyToDoList.Tasc)
+            @Html.EditorFor(MyToDoList => MyToDoList.Tasc)
+        </div>
+        <div class="form__input">
+
+            @Html.LabelFor(MyToDoList => MyToDoList.importance)
+            @Html.EditorFor(MyToDoList => MyToDoList.importance)
+        </div>
+        <div class="form__input">
+
+            @Html.LabelFor(MyToDoList => MyToDoList.CompletedNoCompleted)
+            @Html.EditorFor(MyToDoList => MyToDoList.CompletedNoCompleted)
+        </div>
+        <div class="form__btn" >
+            <input type="submit" onclick="return false" value="Save" />
+        </div>
+    </form>
+    <div>
+        <script>
+            const inputs = document.querySelectorAll('.text-box');
+            const btn = document.querySelector('.form__btn');
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const data = {};
+                inputs.forEach(elem => {
+                    data[elem.id] = elem.value;
+                });
+                fetch('/Home/Create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(data),
+                    myToDoList: JSON.stringify(data),
+                });
+            });
+        </script>
+    </div>
+}

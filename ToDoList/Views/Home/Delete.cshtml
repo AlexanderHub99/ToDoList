@@ -1,0 +1,28 @@
+﻿@using ToDoList.Models
+@model MyToDoList
+@using (Html.BeginForm())
+{
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <meta charset="utf-8" />
+    <body class="media-body">
+        <form class="form">
+            <h2>Удоление задачи</h2>
+            <dl>
+                <dt>Номер задачи</dt>
+                <dd>
+                    @Html.DisplayFor(MyToDoList => MyToDoList.Id)
+                    @Html.EditorFor(MyToDoList => MyToDoList.Id)
+                </dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                <input type="submit" value="Удалить" />
+            }
+        </form>
+    
+    </body>
+}
