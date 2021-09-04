@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using ToDoList.Models;
@@ -28,16 +30,18 @@ namespace ToDoList.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         public async Task<IActionResult> Create(MyToDoList myToDoList)
-        {
-            
-            db.MyToDoLists.Add(myToDoList);
-            await db.SaveChangesAsync();
-            return View();
-            //return RedirectToAction("Index");
+         {
 
-        }
+             db.MyToDoLists.Add(myToDoList);
+            await db.SaveChangesAsync();
+            
+           return RedirectToAction("Index");
+
+         }
         [HttpGet]
         public ActionResult Delete(int id)
         {

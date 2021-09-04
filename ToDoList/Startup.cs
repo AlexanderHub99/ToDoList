@@ -28,10 +28,7 @@ namespace ToDoList
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(options =>
-            {
-                options.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
-            });
+            
 
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
@@ -40,25 +37,9 @@ namespace ToDoList
                 options.UseSqlServer(connection));
             services.AddControllersWithViews();
             services.AddMvc();
-            services
-                  .AddControllersWithViews()
-                   .AddNewtonsoftJson();
+            
         }
-        private static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
-        {
-            var builder = new ServiceCollection()
-                .AddLogging()
-                .AddMvc()
-                .AddNewtonsoftJson()
-                .Services.BuildServiceProvider();
-
-            return builder
-                .GetRequiredService<IOptions<MvcOptions>>()
-                .Value
-                .InputFormatters
-                .OfType<NewtonsoftJsonPatchInputFormatter>()
-                .First();
-        }
+       
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
