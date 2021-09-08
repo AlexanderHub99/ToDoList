@@ -1,25 +1,83 @@
 ﻿@model IEnumerable<ToDoList.Models.MyToDoList>
-@{
-    ViewBag.Title = "Все пользователи";
-}
-<environment include="Development">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</environment>
-<meta charset="utf-8" />
-<a href="Home/Create">Добавить пользователя</a>
+@using ToDoList.Models
 
-    <table >
+<!DOCTYPE HTML>
+<html >
+<head>
+    <environment include="Development"> 
+        <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <meta charset="utf-8" />
 
-        <tr><td>Номер задачи</td><td>Время записи</td><td>Задача</td><td>Приоритет выполнения</td><td>Выполнения</td></tr>
+    <title>ToDoList</title>
+   
+</head>
+<body>
 
-        @foreach (var item in Model)
-        {
-            <tr><td>@item.Id</td><td>@item.DateTime</td><td>@item.Tasc</td><td>@item.importance</td><td>@item.CompletedNoCompleted</td></tr>
+    
+
+   
+
+<form method="post">
+    
+    <div class="card">
+        
+        <div class="txt">
+
+            <input type="date" name="DateTime" placeholder="Дата выполнения." value="" />
+        </div>
+        <div class="txt">
+            <select class="select-card" name="CompletedNoCompleted">
+                <option disabled>Место выполнения.</option>
+                <option value="Надо сделать  дома:">Надо сделать  дома:</option>
+                <option value="Надо сделать  на работе:">Надо сделать  на работе:</option>
+                <option value="Надо сделать  в огороде:">Надо сделать  в огороде:</option>
+                <option value="Надо сделать  в городе:">Надо сделать  в городе:</option>
+            </select>
+        </div>
+        <div class="txt">
+            <input type="text" name="Tasc" placeholder="Задача." value="" />
+        </div>
+        <div>
+            <select class="select-card" name="importance">
+                <option disabled>Выберите приоритет.</option>
+                <option value="Высокий приоритет.">Высокий приоритет.</option>
+                <option value="Средний  приоритет.">Средний  приоритет.</option>
+                <option value="Низкий  приоритет.">Низкий  приоритет.</option>
+            </select>
+        </div>
+        <div class="txt">
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit" class="submit" />
+        </div>
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+
+
+<div class="card">
+
+    <div class="txt">@Html.ActionLink("Удалить", "Delete", new { id = item.Id })</div>
+    <div class="txt"> @item.DateTime</div>
+    <div class="txt">@item.CompletedNoCompleted</div>
+    <div class="txt"> @item.Tasc</div>
+    <div class="txt">@item.importance</div>
+</div>
+
+    }
+
+</form>
+</body>
+</html>
 
 
 
 
-        }
-    </table>
+
+
+
+
 

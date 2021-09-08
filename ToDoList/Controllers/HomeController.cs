@@ -18,8 +18,19 @@ namespace ToDoList.Controllers
         {
             db = context;
         }
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index(MyToDoList myToDoList)
         {
+            
+
+            if (myToDoList.CompletedNoCompleted != null | myToDoList.DateTime != null | myToDoList.importance != null | myToDoList.Tasc != null )
+            {
+                db.MyToDoLists.Add(myToDoList);
+                await db.SaveChangesAsync();
+            }
+            
+
+
             return View(await db.MyToDoLists.ToListAsync());
         }
         public IActionResult Create()
@@ -32,16 +43,16 @@ namespace ToDoList.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> Create(MyToDoList myToDoList)
-         {
+        ///[HttpPost]
+       // public async Task<IActionResult> Create(MyToDoList myToDoList)
+        // {
 
-             db.MyToDoLists.Add(myToDoList);
-            await db.SaveChangesAsync();
+        //     db.MyToDoLists.Add(myToDoList);
+         //   await db.SaveChangesAsync();
             
-           return RedirectToAction("Index");
+        //    return RedirectToAction("Index");
 
-         }
+        // }
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -63,7 +74,7 @@ namespace ToDoList.Controllers
             db.MyToDoLists.Remove(b);
             db.SaveChanges();
             
-            return RedirectToAction("Delete");
+            return RedirectToAction("Index");
         }
     }
 

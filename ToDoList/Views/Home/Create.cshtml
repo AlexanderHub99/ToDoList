@@ -1,40 +1,46 @@
-﻿@using ToDoList.Models
-@model MyToDoList
+﻿@model ToDoList.Models.MyToDoList
+@using ToDoList.Models
+<!DOCTYPE html>
 
 
-@using (Html.BeginForm())
-{
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <meta charset="utf-8" />
-    <form class="form">
-        <h2> Добовление задачи</h2>
-        <div class="form__input">
-            @Html.LabelFor(MyToDoList => MyToDoList.DateTime)
-            @Html.EditorFor(MyToDoList => MyToDoList.DateTime)
-        </div>
-        <div class="form__input">
-            @Html.LabelFor(MyToDoList => MyToDoList.Tasc)
-            @Html.EditorFor(MyToDoList => MyToDoList.Tasc)
-        </div>
-        <div class="form__input">
 
-            @Html.LabelFor(MyToDoList => MyToDoList.importance)
-            @Html.EditorFor(MyToDoList => MyToDoList.importance)
-        </div>
-        <div class="form__input">
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</environment>
+<meta charset="utf-8" />
 
-            @Html.LabelFor(MyToDoList => MyToDoList.CompletedNoCompleted)
-            @Html.EditorFor(MyToDoList => MyToDoList.CompletedNoCompleted)
-        </div>
-        <div class="form__btn" >
-            <input type="submit"  value="Save" />
-        </div>
+<html>
+<head>
+    <title>Customer Form</title>
+</head>
+<body>
+    <form method="post">
+        <fieldset>
+            <legend>Add Tasc</legend>
+            <div>
+                <label for="DateTime">Date Time:</label>
+                <input type="text" name="DateTime" value="" />
+            </div>
+            <div>
+                <label for="Tasc">Tasc:</label>
+                <input type="text" name="Tasc" value="" />
+            </div>
+            <div>
+                <label for="importance">Importance:</label>
+                <input type="text" name="importance" value="" />
+            </div>
+            <div>
+                <label for="CompletedNoCompleted">CompletedNoCompleted:</label>
+                <input type="text" name="CompletedNoCompleted" value="" />
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <input type="submit" value="Submit" class="submit" />
+            </div>
+        </fieldset>
     </form>
-    
-           
-        
-   
-}
+</body>
+</html>
+
+

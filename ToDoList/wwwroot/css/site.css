@@ -1,53 +1,49 @@
-﻿form {
-    width: auto;
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px #ccc;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+﻿
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0px;
+    background: url(../img/ego-vorseyshestvo-kover.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+.card {
+    width: auto;
+    box-shadow: 0 5px 10px #808080;
+    background-color: rgb(255, 163, 102, 0.7);
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    text-align: center;
+}
+    
+.txt {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+   
+    display: inline-block
 }
 
-.form__input {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-    .form__input input {
-        background: #ad7a7a;
-        transition: all .9s;
-        border-radius: 5px;
-        outline: none;
-        border: none;
-        padding: 10px;
-    }
-
-        .form__input input:focus {
-            background: #000000;
-            color: white;
-        }
-
-.form__btn input {
-    border: none;
-    background: #45b4d3;
+input {
     border-radius: 5px;
+    font: 20pt/15pt sans-serif;
 }
 
-    .form__btn input:hover {
-        border: none;
-        transition: all .9s;
-        background: #1f459f;
-    }
+.select-card {
+    font-weight: bold;
+    font-size: 25px;
+    height: 36px;
+    width: 326px;
+    
+    background-color: #fff;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
